@@ -13,7 +13,7 @@ class KMEANS:
         
     def euclidean_distance(self,first,second):
         sum = 0
-        for i in range(first.len()):
+        for i in range(first.size):
             sum += (first[i] - second[i])**2
         return np.sqrt(sum)
     
@@ -22,12 +22,12 @@ class KMEANS:
         self.centroids = [self.data[index]  for index in random_points]
     
     def kmeans(self):
-        initialize_centroids()
+        self.initialize_centroids()
         for i in range(self.iterations):
             self._create_clusters()
             past_centroids = self.centroids
             self._update_centroids()
-            if self._is_converged(self,past_centroids):
+            if self._is_converged(past_centroids):
                 break
     
     def _create_clusters(self):
@@ -36,7 +36,7 @@ class KMEANS:
             self.clusters[centroid_index].append(index)
     
     def _get_closest_centroid(self,row):
-        distances = [euclidean_distance(row, centroid) for centroid in self.centroids ]
+        distances = [self.euclidean_distance(row, centroid) for centroid in self.centroids ]
         closest = np.argmin(distances)
         return closest
     
@@ -44,10 +44,10 @@ class KMEANS:
         for index, cluster in enumerate(self.clusters):
             mean =  [0] * self.dimensions
             for idx in cluster:
-                mean += data[idx]
-            mean = mean / len(self.cluster)
+                mean += self.data[idx]
+            mean = mean / float(len(cluster))
             self.centroids[index] = mean
     
     def _is_converged(self,past_centroids):
-        distances = [euclidean_distance(past_centroids[i],self.centroids[i]) for i in range (self.k)]
+        distances = [self.euclidean_distance(past_centroids[i],self.centroids[i]) for i in range (self.k)]
         return round(sum(distances)) == 0   
