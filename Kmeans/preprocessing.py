@@ -1,4 +1,18 @@
 import numpy as np
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.decomposition import PCA
+
+
+def normalize(data):
+    scaler = MinMaxScaler()
+    normalizeData = scaler.fit_transform(data)
+
+    return normalizeData
+
+def components_analysis(data):
+    pca = PCA(.95)
+    principal_components = pca.fit_transform(data)
+    return principal_components
 
 def get_data(fileName):
     matrix = []
