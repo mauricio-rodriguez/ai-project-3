@@ -1,12 +1,5 @@
 import numpy as np
 
-def string_to_floats(matrix):
-    new_matrix = np.empty_like(matrix)
-    for index,row in enumerate(matrix):
-        for indx,element in enumerate(row):
-            new_matrix[index][indx] = float(element)
-    return new_matrix
-
 def get_data(fileName):
     matrix = []
     with open(fileName,'r') as file:
