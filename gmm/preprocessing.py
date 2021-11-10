@@ -4,8 +4,8 @@ from sklearn.decomposition import PCA
 from sklearn.preprocessing import MinMaxScaler
 
 
-def reduction(data):
-    pca = PCA(n_components=20)
+def reduction(data, components):
+    pca = PCA(n_components=components)
     principalComponents = pca.fit_transform(data)
     df = pd.DataFrame(data=principalComponents)
     df.to_csv("reducted.csv", index=False)
