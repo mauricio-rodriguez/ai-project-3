@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 class KMEANS:
     def __init__(self, data,k = 3, iterations = 100):
@@ -14,7 +15,7 @@ class KMEANS:
     def euclidean_distance(self,first,second):
         sum = 0
         for i in range(first.size):
-            sum += (first[i] - second[i])**2
+            sum += (first[i] - second[i]) **2
         return np.sqrt(sum)
     
     def initialize_centroids(self):
@@ -24,16 +25,22 @@ class KMEANS:
     def kmeans(self):
         self.initialize_centroids()
         for i in range(self.iterations):
-            self._create_clusters()
+            self.clusters = self._create_clusters()
             past_centroids = self.centroids
-            self._update_centroids()
+            self.centroids = self._update_centroids()
             if self._is_converged(past_centroids):
+                print("converged",i)
                 break
+
+        return self.clusters
+ 
     
     def _create_clusters(self):
+        clusters = [[] for i in range(self.k)]
         for index, row in enumerate(self.data):
             centroid_index = self._get_closest_centroid(row)
-            self.clusters[centroid_index].append(index)
+            clusters[centroid_index].append(index)
+        return clusters
     
     def _get_closest_centroid(self,row):
         distances = [self.euclidean_distance(row, centroid) for centroid in self.centroids ]
@@ -41,13 +48,16 @@ class KMEANS:
         return closest
     
     def _update_centroids(self):
+        centroids = np.zeros((self.k, self.dimensions))
         for index, cluster in enumerate(self.clusters):
-            mean =  [0] * self.dimensions
+            mean =  np.zeros(self.dimensions)
             for idx in cluster:
                 mean += self.data[idx]
             mean = mean / float(len(cluster))
-            self.centroids[index] = mean
+            centroids[index] = mean
+        return centroids
     
     def _is_converged(self,past_centroids):
         distances = [self.euclidean_distance(past_centroids[i],self.centroids[i]) for i in range (self.k)]
-        return round(sum(distances)) == 0   
+        return sum(distances) == 0   
+    
