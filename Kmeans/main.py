@@ -30,4 +30,4 @@ if __name__ == "__main__":
     labels = [[y[element] for element in cluster] for cluster in clusters]
     for i in labels:
         print(i)
-
+        print()
