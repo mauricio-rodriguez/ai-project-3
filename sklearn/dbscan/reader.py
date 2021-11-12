@@ -26,6 +26,6 @@ def read(dataset, tissue):
     y = []
 
     datasetDf = pd.read_csv(dataset)
-    tissueDf = pd.read_csv(tissue)
+    tissueDf = pd.read_csv(tissue, usecols=["name"])
 
     return datasetDf.values, tissueDf.values

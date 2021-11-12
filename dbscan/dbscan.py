@@ -17,7 +17,7 @@ class DBScan:
     def rangeQuery(self, point):
         points = []
         for i in range(len(self.data)):
-            d = np.linalg.norm(self.data[i] - self.data[point],2)
+            d = np.linalg.norm(self.data[i] - self.data[point], 2)
             if d <= self.eps:
                 points.append(i)
         return points
