@@ -54,7 +54,7 @@ class DBScan:
                         self.labelPoints[x] = C
 
                 while not neigNeigs.empty():
-                    neighbors = self.pointCount[q.get()]
+                    neighbors = self.pointCount[neigNeigs.get()]
                     for y in neighbors:
                         if (self.labelPoints[y] == -1):
                             self.labelPoints[y] = C
