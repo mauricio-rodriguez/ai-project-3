@@ -1,8 +1,8 @@
 from dbscan import *
+import reader as rd
 
-avr = np.array([[0,0],[1,0],[1,1],[2,2],[3,1],[3,0],[0,1],[3,2],[6,3]])
+x, y = rd.read("../data/reducted.csv", "../data/tissue.csv")
 
-db = DBScan(avr,1,3)
+db = DBScan(x,5,2)
 res = db.fit()
 
-print(res)
