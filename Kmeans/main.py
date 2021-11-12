@@ -26,9 +26,9 @@ if __name__ == "__main__":
     
     
     n_uniques = len(np.unique(y))
-    test = KMEANS(x,n_uniques)
+    test = KMEANS(x,3)
     clusters = test.kmeans()
     labels = [[y[element] for element in cluster] for cluster in clusters]
-    print(labels)
+    #print(labels)
     
     
