@@ -1,0 +1,27 @@
+# Clusters: 8
+Cluster  -1
+['kidney'] ['kidney'] ['kidney'] ['kidney'] ['kidney'] ['kidney'] ['kidney'] ['kidney'] ['kidney'] ['kidney'] ['kidney'] ['kidney'] ['kidney'] ['kidney'] ['kidney'] ['kidney'] ['hippocampus'] ['hippocampus'] ['hippocampus'] ['hippocampus'] ['hippocampus'] ['hippocampus'] ['hippocampus'] ['hippocampus'] ['hippocampus'] ['hippocampus'] ['hippocampus'] ['hippocampus'] ['hippocampus'] ['hippocampus'] ['hippocampus'] ['hippocampus'] ['hippocampus'] ['hippocampus'] ['hippocampus'] ['hippocampus'] ['hippocampus'] ['hippocampus'] ['hippocampus'] ['hippocampus'] ['hippocampus'] ['hippocampus'] ['hippocampus'] ['hippocampus'] ['hippocampus'] ['hippocampus'] ['cerebellum'] ['cerebellum'] ['cerebellum'] ['cerebellum'] ['cerebellum'] ['cerebellum'] ['cerebellum'] ['cerebellum'] ['cerebellum'] ['cerebellum'] ['cerebellum'] ['cerebellum'] ['cerebellum'] ['cerebellum'] ['cerebellum'] ['cerebellum'] ['cerebellum'] ['cerebellum'] ['cerebellum'] ['cerebellum'] ['cerebellum'] ['cerebellum'] ['cerebellum'] ['cerebellum'] ['cerebellum'] ['cerebellum'] ['cerebellum'] ['kidney'] ['kidney'] ['kidney'] ['kidney'] ['kidney'] ['kidney'] ['kidney'] ['kidney'] ['kidney'] ['kidney'] ['kidney'] ['kidney'] ['kidney'] ['colon'] ['colon'] ['colon'] ['colon'] ['colon'] ['colon'] ['colon'] ['colon'] ['colon'] ['colon'] ['colon'] ['colon'] ['colon'] ['colon'] ['colon'] ['colon'] ['colon'] ['colon'] ['colon'] ['colon'] ['colon'] ['colon'] ['colon'] ['colon'] ['colon'] ['colon'] ['colon'] ['colon'] ['colon'] ['colon'] ['colon'] ['colon'] ['colon'] ['colon'] ['kidney'] ['liver'] ['kidney'] ['kidney'] ['kidney'] ['liver'] ['kidney'] ['kidney'] ['cerebellum'] ['hippocampus'] ['liver'] ['liver'] ['liver'] ['liver'] ['liver'] ['liver'] ['cerebellum'] ['cerebellum'] ['liver'] ['liver'] ['kidney'] ['kidney'] ['endometrium'] ['endometrium'] ['endometrium'] ['endometrium'] ['endometrium'] ['endometrium'] ['endometrium'] ['endometrium'] ['endometrium'] ['endometrium'] ['endometrium'] ['endometrium'] ['endometrium'] ['endometrium'] ['endometrium'] ['liver'] ['liver'] ['liver'] ['liver'] ['cerebellum'] ['cerebellum'] ['cerebellum'] ['cerebellum'] ['cerebellum'] ['cerebellum'] ['cerebellum'] ['cerebellum'] ['placenta'] ['placenta'] ['placenta'] ['placenta'] ['placenta'] ['placenta'] 
+
+Cluster  0
+['kidney'] ['kidney'] 
+
+Cluster  1
+['liver'] ['liver'] 
+
+Cluster  2
+['liver'] ['liver'] 
+
+Cluster  3
+['liver'] ['liver'] 
+
+Cluster  4
+['liver'] ['liver'] 
+
+Cluster  5
+['liver'] ['liver'] 
+
+Cluster  6
+['liver'] ['liver'] 
+
+Confusion matrix: [[ 5068     0]
+ [    0 30464]]

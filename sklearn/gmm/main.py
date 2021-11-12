@@ -10,7 +10,10 @@ if __name__ == "__main__":
 
     clustering = GaussianMixture(n_components=len(
         np.unique(y)), random_state=0).fit(x)
-    print(clustering.means_)
 
+    print("Labels:")
     print(clustering.predict(x))
-    print(clustering.score(x))
+    print()
+    print("Clusters:", len(list(set(clustering.predict(x)))))
+    print()
+    print("Likelihood:", clustering.score(x))

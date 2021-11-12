@@ -9,12 +9,9 @@ if __name__ == "__main__":
     x, y = rd.read("../../data/reducted.csv", "../../data/tissue.csv")
 
     clustering = DBSCAN(eps=3, min_samples=2).fit(x)
-    print(clustering.labels_)
-    print(len(set(clustering.labels_)))
+    print("# Clusters:", len(set(clustering.labels_)))
 
-    print(len(np.unique(y)))
     labels = clustering.fit_predict(x)
-    print(labels)
 
     clusters = {}
     n = 0
@@ -32,4 +29,4 @@ if __name__ == "__main__":
         print()
         print()
 
-    print(pair_confusion_matrix(clustering.labels_, labels))
+    print("Confusion matrix:", pair_confusion_matrix(clustering.labels_, labels))

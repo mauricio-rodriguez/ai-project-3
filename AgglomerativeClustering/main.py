@@ -15,7 +15,6 @@ if __name__ == "__main__":
     print("Y's:", len(np.unique(y)))
 
     labels = clustering.fit_predict(x)
-    print(labels)
 
     clusters = {}
     n = 0
@@ -33,4 +32,4 @@ if __name__ == "__main__":
         print()
         print()
 
-    print(pair_confusion_matrix(clustering.labels_, labels))
+    print("Confusion Matrix:", pair_confusion_matrix(clustering.labels_, labels))
