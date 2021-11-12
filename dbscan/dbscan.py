@@ -1,64 +1,66 @@
 import numpy as np
-import matplotlib.pyplot as plt
 import queue
-import csv
 
 
-def rangeQuery(data, P, eps):
-    points = []
-    for i in range(len(data)):
-        d = np.linalg.norm(data[i] - data[P], 2)
-        if d <= eps:
-            points.append(i)
-    return points
+class DBScan:
+    def __init__(self, data, eps=1, minPts=3):
+        self.data = data
+        self.eps = eps
+        self.minPts = minPts
 
+        self.pointCount = []
+        self.moreMinPoints = []
+        self.notMatchPoints = []
+        self.labelPoints = []
 
-def dbscan(data, eps, minPts):
-    pointCount = []
-    moreMinPoints = []
-    nonCore = []
-    labelPoints = []
-    for i in range(len(data)):
-        labelPoints.append(0)
+    def rangeQuery(self, point):
+        points = []
+        for i in range(len(self.data)):
+            d = np.linalg.norm(self.data[i] - self.data[point], 2)
+            if d <= self.eps:
+                points.append(i)
+        return points
 
-    for i in range(len(data)):
-        pointCount.append(rangeQuery(data, i, eps))
+    def fit(self):
+        for i in range(len(self.data)):
+            self.labelPoints.append(0)
 
-    for i in range(len(pointCount)):
-        if (len(pointCount[i]) >= minPts):
-            labelPoints[i] = -1
-            moreMinPoints.append(i)
-        else:
-            nonCore.append(i)
+        for i in range(len(self.data)):
+            self.pointCount.append(self.rangeQuery(i))
 
-    for i in nonCore:
-        for j in pointCount[i]:
-            if j in moreMinPoints:
-                labelPoints[i] = -2
+        for i in range(len(self.pointCount)):
+            if (len(self.pointCount[i]) >= self.minPts):
+                self.labelPoints[i] = -1
+                self.moreMinPoints.append(i)
+            else:
+                self.notMatchPoints.append(i)
 
-                break
+        for i in self.notMatchPoints:
+            for j in self.pointCount[i]:
+                if j in self.moreMinPoints:
+                    self.labelPoints[i] = -2
+                    break
 
-    C = 1
-    for i in range(len(labelPoints)):
-        q = queue.Queue()
-        if (labelPoints[i] == -1):
-            labelPoints[i] = C
-            for x in pointCount[i]:
-                if (labelPoints[x] == -1):
-                    q.put(x)
-                    labelPoints[x] = C
-                elif (labelPoints[x] == -2):
-                    labelPoints[x] = C
+        C = 1
+        for i in range(len(self.labelPoints)):
+            q = queue.Queue()
+            if (self.labelPoints[i] == -1):
+                self.labelPoints[i] = C
+                for x in self.pointCount[i]:
+                    if (self.labelPoints[x] == -1):
+                        q.put(x)
+                        self.labelPoints[x] = C
+                    elif (self.labelPoints[x] == -2):
+                        self.labelPoints[x] = C
 
-            while not q.empty():
-                neighbors = pointCount[q.get()]
-                for y in neighbors:
-                    if (labelPoints[y] == -1):
-                        labelPoints[y] = C
-                        q.put(y)
-                    if (labelPoints[y] == -2):
-                        labelPoints[y] = C
-            C += 1
+                while not q.empty():
+                    neighbors = self.pointCount[q.get()]
+                    for y in neighbors:
+                        if (self.labelPoints[y] == -1):
+                            self.labelPoints[y] = C
+                            q.put(y)
+                        if (self.labelPoints[y] == -2):
+                            self.labelPoints[y] = C
+                C += 1
 
-    return labelPoints
-
+        return self.labelPoints
