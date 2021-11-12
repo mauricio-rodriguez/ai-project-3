@@ -8,19 +8,18 @@ class DBScan:
         self.data = data
         self.eps = eps
         self.minPts = minPts
-
-        self.pointCount = []
         self.moreMinPoints = []
         self.notMatchPoints = []
         self.labelPoints = []
+        self.pointCount = []
 
     def rangeQuery(self, point):
-        points = []
+        neighborPts = []
         for i in range(len(self.data)):
             d = np.linalg.norm(self.data[i] - self.data[point], 2)
             if d <= self.eps:
-                points.append(i)
-        return points
+                neighborPts.append(i)
+        return neighborPts
 
     def fit(self):
         for i in range(len(self.data)):
