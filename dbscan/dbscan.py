@@ -9,7 +9,7 @@ class DBScan:
 
         self.pointCount = []
         self.moreMinPoints = []
-        self.nonCore = []
+        self.notMatchPoints = []
         self.labelPoints = []
 
     def rangeQuery(self, point):
@@ -32,9 +32,9 @@ class DBScan:
                 self.labelPoints[i] = -1
                 self.moreMinPoints.append(i)
             else:
-                self.nonCore.append(i)
+                self.notMatchPoints.append(i)
 
-        for i in self.nonCore:
+        for i in self.notMatchPoints:
             for j in self.pointCount[i]:
                 if j in self.moreMinPoints:
                     self.labelPoints[i] = -2
